@@ -1,0 +1,36 @@
+{
+	"name": "wp-kit/notifications",
+	"description": "A Wordpress PHP Component to handle frontend and admin notifications",
+	"keywords": ["wordpress", "themosis", "oop", "notifications"],
+	"homepage" : "https://github.com/wp-kit/notifications",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Creative Little Dots",
+			"email" : "tech@creativelittledots.co.uk",
+			"homepage" : "https://creativelittledots.co.uk/",
+			"role" : "Developers"
+		}
+	],
+	"require": {
+        "php": ">=5.6.4",
+        "illuminate/container": "5.*",
+        "illuminate/session": "5.*"
+    },
+	"type": "library",
+	"autoload": {
+        "psr-4": {
+            "WPKit\\Notifications\\": "src/Notifications" 
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "config": {
+		"preferred-install": "dist"
+	},
+	"repositories": [
+	],
+	"scripts": {
+	}
+}
