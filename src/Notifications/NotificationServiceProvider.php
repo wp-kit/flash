@@ -30,15 +30,7 @@ class NotificationServiceProvider extends ServiceProvider
         );
 			
 		Route::aliasMiddleware('web.session', StartSession::class);
-		
-		$this->app['view.finder']->addLocation($this->defaultPath('views'));
         
-    }
-    
-    public function defaultPath( $path = '', $file = '' ) {
-	    
-	    return WPKIT_NOTIFICATIONS_RESOURCES . DS . ( $path ? $path . DS : '' ) . ( $file ? $file : '' );
-	    
     }
     	
 }

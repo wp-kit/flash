@@ -8,12 +8,6 @@
 		
 	} 
 	
-	if( ! defined( 'WPKIT_NOTIFICATIONS_RESOURCES' ) ) {
-	
-		define( 'WPKIT_NOTIFICATIONS_RESOURCES' , __DIR__ . DS . 'resources' );
-		
-	}
-	
 	if (!function_exists('app')) {
 	    /**
 	     * Helper function to quickly retrieve an instance.
