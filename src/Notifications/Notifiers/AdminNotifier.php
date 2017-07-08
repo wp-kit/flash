@@ -7,7 +7,7 @@
 	    /**
 	     * The notifier instance.
 	     *
-	     * @var \WPKit\Notifiers\FrontEndNotiifier
+	     * @var \WPKit\Notifications\Notifiers\FrontEndNotiifier
 	     */
 	    protected static $instance;
 	    
@@ -19,26 +19,21 @@
 	    protected $session_key = '__wpkit_admin_notifications';
 	    
 	    /**
+	     * The view file.
+	     *
+	     * @var string
+	     */
+	    protected $view_file = 'notifiers/admin';
+	    
+	    /**
 	     * Runs actions of Notifer
 	     *
 	     * return void
 	     */
-	    protected function runActions() {
+	    protected function actions() {
 		    
-		    add_action( 'admin_notices', [$this, 'displayNotices'] );
-		    add_action( 'admin_footer', [$this, 'clearNotices'] );
+		    add_action( 'admin_notices', [$this, 'print'] );
 		    
-	    }
-	    
-	    /**
-	     * Get Notifier Template
-	     *
-	     * @return string
-	     */
-	    public function getTemplate( $notice = array() ) 
-	    {
-		    $template = get_element( 'Notifiers/Admin', 'notice', $notice );
-		    return $template ? $template : parent::getTemplate( $notice );
 	    }
 	
 	}

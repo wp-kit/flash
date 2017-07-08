@@ -7,7 +7,7 @@
 	    /**
 	     * The notifier instance.
 	     *
-	     * @var \WPKit\Core\Notifier
+	     * @var \WPKit\Notifications\Notifiers\Notifier
 	     */
 	    protected static $instance;
 	    
@@ -17,6 +17,13 @@
 	     * @var string
 	     */
 	    protected $session_key = '__wpkit_notifications';
+	    
+	    /**
+	     * The view file.
+	     *
+	     * @var string
+	     */
+	    protected $view_file = 'notifiers/notification';
 	    
 	    /**
 	     * The notifier classes.
@@ -38,10 +45,7 @@
 	        {
 	            self::$instance = $this;
 	        }
-	        if(!session_id()) {
-		        session_start();
-	        }
-	        $this->runActions();
+	        $this->actions();
 	    }
 	
 	    /**
@@ -49,18 +53,15 @@
 	     *
 	     * @param string  $message
 	     * @param string  $class
-	     * @param boolean $flash
 	     */
-	    public function addNotice($message, $type = 'success')
+	    public function add($message, $type = 'success')
 	    {
 	        $notification = [
 	            'message' => $message,
-	            'class'   => $this->getTypeClass( $type )
-	        ];
+	            'class'   => $this->className( $type )
+	        ];;
 	
-	        $notices = $this->getNotices();
-	        $notices[] = $notification;
-	        session()->put($this->session_key, $notices);
+	        session()->push($this->session_key, $notification);
 	        
 	        return $notification;
 	    }
@@ -70,18 +71,14 @@
 	     *
 	     * return void
 	     */
-	    protected function runActions() {
-		    
-		    add_action('shutdown', [$this, 'clearNotices']);
-		    
-	    }
+	    protected function actions() {}
 	    
 	    /**
 	     * Get type class
 	     *
 	     * return string
 	     */
-	    protected function getTypeClass( $type ) {
+	    protected function className( $type ) {
 		    
 		    $type = ! empty( $this->classes[$type] ) ? $type : 'warning';
 		    
@@ -97,7 +94,7 @@
 	     */
 	    public function success($message, $flash = false)
 	    {
-	        $this->addNotice($message, 'success', $flash);
+	        $this->add($message, 'success', $flash);
 	    }
 	
 	    /**
@@ -108,7 +105,7 @@
 	     */
 	    public function warning($message, $flash = false)
 	    {
-	        $this->addNotice($message, 'warning', $flash);
+	        $this->add($message, 'warning', $flash);
 	    }
 	
 	    /**
@@ -119,7 +116,7 @@
 	     */
 	    public function error($message, $flash = false)
 	    {
-	        $this->addNotice($message, 'error', $flash);
+	        $this->add($message, 'error', $flash);
 	    }
 	    
 	    /**
@@ -127,24 +124,25 @@
 	     *
 	     * @return array
 	     */
-	    public function getNotices()
+	    public function all()
 	    {
 	        return session()->get($this->session_key, []);
 	    }
 	
 	    /**
-	     * Displays all the accumulated notices.
+	     * Prints all the accumulated notices.
 	     *
 	     * @return void
 	     */
-	    public function displayNotices()
+	    public function print()
 	    {
-	        foreach ($this->getNotices() as $notice)
+		    var_dump($this->all());
+	        foreach ($this->all() as $notice)
 	        {
-	            $this->renderNotice( $notice, true );
+	            $this->render( $notice, true );
 	        }
 	
-			$this->clearNotices();
+			$this->clear();
 	    }
 	    
 	    /**
@@ -152,9 +150,9 @@
 	     *
 	     * @return void
 	     */
-	    public function renderNotice( $notice = array(), $echo = false )
+	    public function render( $notice = array(), $echo = false )
 	    {
-	        $html = $this->getTemplate( $notice );
+	        $html = $this->template( $notice );
 	        
 	        if( $echo ) {
 		        
@@ -173,9 +171,9 @@
 	     *
 	     * @return string
 	     */
-	    public function getTemplate( $notice = array() ) 
+	    public function template( $notice = array() ) 
 	    {
-		    return "<div class=\"{$notice['class']}\"><p>{$notice['message']}</p></div>";
+		    return view( $this->view_file, $notice );
 	    }
 	    
 	    /**
@@ -183,7 +181,7 @@
 	     *
 	     * @return void
 	     */
-	    public function clearNotices()
+	    public function clear()
 	    {
 	    	session()->put($this->session_key, []);
 	    }

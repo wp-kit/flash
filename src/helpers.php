@@ -2,6 +2,18 @@
 	
 	use Illuminate\Container\Container;
 	
+	if( ! defined( 'DS' ) ) {
+		
+		define( 'DS', DIRECTORY_SEPARATOR );
+		
+	} 
+	
+	if( ! defined( 'WPKIT_NOTIFICATIONS_RESOURCES' ) ) {
+	
+		define( 'WPKIT_NOTIFICATIONS_RESOURCES' , __DIR__ . DS . 'resources' );
+		
+	}
+	
 	if (!function_exists('app')) {
 	    /**
 	     * Helper function to quickly retrieve an instance.
@@ -46,11 +58,88 @@
 	    /**
 	     * Gets the notifier object
 	     *
-	     * @param  string $key
+	     * @param  string $notifier
 	     * @return \WPKit\Notifications\Notifiers\Notifier
 	     */
 	    function notifier($notifier = 'frontend')
 	    {
 	        return app($notifier.'Notifier');
+	    }
+	}
+	
+	if( ! function_exists('resources_path') ) {
+		/**
+	     * Gets the resources path
+	     *
+	     * @return string
+	     */
+	    function resources_path($path = '', $file = '')
+	    {
+		    if( function_exists('themosis_path') ) {
+			    $path = themosis_path('theme' . ( $path ? '.' . $path : ''));
+		    } else {
+			    $path = get_stylesheet_directory() . DS . 'resources' . ( $path ? DS . $path : '' );
+		    }
+		    return $path . ( $file ? DS . $file : '' );
+	    }
+	}
+	
+	if( ! function_exists('storage_path') ) {
+		/**
+	     * Gets the storage path
+	     *
+	     * @return string
+	     */
+	    function storage_path($file = '')
+	    {
+		    if( function_exists('themosis_path') ) {
+			    return themosis_path('storage') . ( $file ? DS . $file : '' );
+		    } else {
+			    return resources_path('storage', $file);
+		    }
+	    }
+	}
+	
+	if( ! function_exists('config_path') ) {
+		/**
+	     * Gets the storage path
+	     *
+	     * @return string
+	     */
+	    function config_path($file = '')
+	    {
+		    return resources_path('config', $file);
+	    }
+	}
+	
+	if( ! function_exists('view_path') ) {
+		/**
+	     * Gets the view path
+	     *
+	     * @return string
+	     */
+	    function view_path($file = '')
+	    {
+		    return resources_path('views', $file);
+	    }
+	}
+	
+	if (!function_exists('view')) {
+	    /**
+	     * Helper function to build views.
+	     *
+	     * @param string $view      The view relative path, name.
+	     * @param array  $data      Passed data.
+	     * @param array  $mergeData
+	     *
+	     * @return string
+	     */
+	    function view($view = null, array $data = [], array $mergeData = [])
+	    {
+	        $factory = app('view');
+	        if (func_num_args() === 0) {
+	            return $factory;
+	        }
+	        return $factory->make($view, $data, $mergeData)->render();
 	    }
 	}
