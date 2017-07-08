@@ -2,6 +2,8 @@
 
 	namespace WPKit\Notifications\Facades;
 	
+	use Illuminate\Support\Facades\Facade;
+	
 	class AdminNotifier extends Facade {
 		
 	    /**

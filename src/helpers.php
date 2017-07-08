@@ -80,7 +80,7 @@
 		    } else {
 			    $path = get_stylesheet_directory() . DS . 'resources' . ( $path ? DS . $path : '' );
 		    }
-		    return $path . ( $file ? DS . $file : '' );
+		    return $path . ltrim( ( $file ? DS . $file : '' ), DS );
 	    }
 	}
 	
@@ -93,7 +93,7 @@
 	    function storage_path($file = '')
 	    {
 		    if( function_exists('themosis_path') ) {
-			    return themosis_path('storage') . ( $file ? DS . $file : '' );
+			    return themosis_path('storage') . ltrim( ( $file ? DS . $file : '' ), DS );
 		    } else {
 			    return resources_path('storage', $file);
 		    }

@@ -1,0 +1,1 @@
+<?php array_map( function( $notification ) { echo $notification; } , $notifications ); ?>

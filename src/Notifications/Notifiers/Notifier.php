@@ -136,34 +136,7 @@
 	     */
 	    public function print()
 	    {
-		    var_dump($this->all());
-	        foreach ($this->all() as $notice)
-	        {
-	            $this->render( $notice, true );
-	        }
-	
-			$this->clear();
-	    }
-	    
-	    /**
-	     * Renders a single notice.
-	     *
-	     * @return void
-	     */
-	    public function render( $notice = array(), $echo = false )
-	    {
-	        $html = $this->template( $notice );
-	        
-	        if( $echo ) {
-		        
-		        echo $html;
-		        
-		        return;
-		        
-	        }
-	        
-	        return $html;
-	        
+		    return session()->getId();
 	    }
 	    
 	    /**
@@ -171,7 +144,7 @@
 	     *
 	     * @return string
 	     */
-	    public function template( $notice = array() ) 
+	    public function build( $notice = array() ) 
 	    {
 		    return view( $this->view_file, $notice );
 	    }
