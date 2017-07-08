@@ -3,7 +3,7 @@
 namespace WPKit\Notifications;
 
 use Illuminate\Support\ServiceProvider;
-use Illminate\Session\SessionServiceProvider;
+use Illuminate\Session\SessionServiceProvider;
 use WPKit\Notifications\Facades\Facade;
 use WPKit\Notifications\Notifiers\FrontEndNotifier;
 use WPKit\Notifications\Notifiers\AdminNotifier;
@@ -27,7 +27,7 @@ class NotificationServiceProvider extends ServiceProvider
 			
 		}
 		
-		Facade:setFacadeApplication($this->app);
+		Facade::setFacadeApplication($this->app);
         
         $this->app->instance(
             'frontendNotifier',
