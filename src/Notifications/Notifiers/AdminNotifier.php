@@ -23,7 +23,7 @@
 	     *
 	     * @var string
 	     */
-	    protected $view_file = 'notifiers/admin';
+	    protected $view = 'notifiers/admin';
 	    
 	    /**
 	     * Runs actions of Notifer

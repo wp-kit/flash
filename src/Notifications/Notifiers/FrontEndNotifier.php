@@ -23,7 +23,7 @@
 	     *
 	     * @var string
 	     */
-	    protected $view_file = 'notifiers/frontend';
+	    protected $view = 'notifiers/frontend';
 	    
 	    /**
 	     * The notifier classes.

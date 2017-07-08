@@ -19,13 +19,6 @@
 	    protected $session_key = '__wpkit_notifications';
 	    
 	    /**
-	     * The view file.
-	     *
-	     * @var string
-	     */
-	    protected $view_file = 'notifiers/notification';
-	    
-	    /**
 	     * The notifier classes.
 	     *
 	     * @var array
@@ -136,7 +129,9 @@
 	     */
 	    public function print()
 	    {
-		    return session()->getId();
+		    $output = implode( array_map( [ $this, 'build' ], $this->all() ) );
+		    $this->clear();
+		    return $output;
 	    }
 	    
 	    /**
@@ -146,7 +141,11 @@
 	     */
 	    public function build( $notice = array() ) 
 	    {
-		    return view( $this->view_file, $notice );
+		    if( view()->exists($this->view) ) {
+		    	return view( $this->view, $notice );
+		    } else {
+		    	return sprintf( '<div class="%s"><p>%s</p></div>', $notice['class'], $notice['message'] );
+		    }
 	    }
 	    
 	    /**

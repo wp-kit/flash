@@ -2,8 +2,6 @@
 
 	namespace WPKit\Notifications\Facades;
 	
-	use Illuminate\Support\Facades\Facade;
-	
 	class FrontEndNotifier extends Facade {
 		
 	    /**
@@ -13,7 +11,7 @@
 	     */
 	    protected static function getFacadeAccessor()
 	    {
-	        return 'frontEndNotifier';
+	        return 'frontendNotifier';
 	    }
 	    
 	}
