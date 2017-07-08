@@ -3,8 +3,8 @@
 namespace WPKit\Notifications;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use WPKit\Session\Middleware\StartSession;
 use WPKit\Notifications\Notifiers\FrontEndNotifier;
 use WPKit\Notifications\Notifiers\AdminNotifier;
 
