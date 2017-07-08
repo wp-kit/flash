@@ -37,7 +37,7 @@ return [
 'aliases' => [
     //
     'AdminNotifier' => WPKit\Notifications\Facades\AdminNotifier::class,
-    'FrontEndNotifier' => WPKit\Notifications\Facades\FrontEndNotifier::class
+    'FrontendNotifier' => WPKit\Notifications\Facades\FrontendNotifier::class
     //
 ]
 ```
@@ -74,7 +74,7 @@ WPKit Notifications are pretty flexible. You can use them anywhere but ideally y
 ```php
 
 use WPKit\Notifications\Facades\AdminNotifier;
-use WPKit\Notifications\Facades\FrontEndNotifier;
+use WPKit\Notifications\Facades\FrontendNotifier;
 
 // as php function as below
 

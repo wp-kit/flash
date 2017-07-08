@@ -2,7 +2,7 @@
 	
 	namespace WPKit\Notifications\Notifiers;
 
-	class FrontEndNotifier extends Notifier {
+	class FrontendNotifier extends Notifier {
 	
 	    /**
 	     * The notifier instance.

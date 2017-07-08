@@ -2,7 +2,7 @@
 
 	namespace WPKit\Notifications\Facades;
 	
-	class FrontEndNotifier extends Facade {
+	class FrontendNotifier extends Facade {
 		
 	    /**
 	     * Get the registered name of the component.

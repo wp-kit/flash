@@ -5,7 +5,7 @@ namespace WPKit\Notifications;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use WPKit\Session\Middleware\StartSession;
-use WPKit\Notifications\Notifiers\FrontEndNotifier;
+use WPKit\Notifications\Notifiers\FrontendNotifier;
 use WPKit\Notifications\Notifiers\AdminNotifier;
 
 class NotificationServiceProvider extends ServiceProvider
@@ -21,7 +21,7 @@ class NotificationServiceProvider extends ServiceProvider
 		
 		$this->app->instance(
             'frontendNotifier',
-            $this->app->make(FrontEndNotifier::class)
+            $this->app->make(FrontendNotifier::class)
         );
         
         $this->app->instance(
