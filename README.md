@@ -2,7 +2,7 @@
 
 This is a Wordpress PHP Component to handles both Frontend and Admin Notifications.
 
-This PHP Component was built to run within an Illiminate Container so is perfect for frameworks such as Themosis.
+This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
 Often, Wordpress developers want to be able to use a single component the handle notifications stored in the session and their output to the client, usually after a redirect. 
 
