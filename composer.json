@@ -1,6 +1,6 @@
 {
 	"name": "wp-kit/notifications",
-	"description": "A Wordpress PHP Component to handle frontend and admin notifications",
+	"description": "A Wordpress PHP Component that handles frontend and admin notifications",
 	"keywords": ["wordpress", "themosis", "oop", "notifications"],
 	"homepage" : "https://github.com/wp-kit/notifications",
 	"license": "MIT",
