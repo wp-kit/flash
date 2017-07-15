@@ -1,6 +1,6 @@
 # WPKit Notifications
 
-This is a Wordpress PHP Component to handles both Frontend and Admin Notifications.
+This is a Wordpress PHP Component that handles both Frontend and Admin Notifications.
 
 This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
