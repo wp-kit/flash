@@ -1,6 +1,8 @@
 <?php 
 	
 	namespace WPKit\Notifications\Notifiers;
+	
+	use Illuminate\Support\Collection;
 
 	class Notifier {
 	
@@ -56,7 +58,7 @@
 	
 	        session()->push($this->session_key, $notification);
 	        
-	        return $notification;
+	        return $this;
 	    }
 	    
 	    /**
@@ -87,7 +89,7 @@
 	     */
 	    public function success($message, $flash = false)
 	    {
-	        $this->add($message, 'success', $flash);
+	        return $this->add($message, 'success', $flash);
 	    }
 	
 	    /**
@@ -98,7 +100,7 @@
 	     */
 	    public function warning($message, $flash = false)
 	    {
-	        $this->add($message, 'warning', $flash);
+	        return $this->add($message, 'warning', $flash);
 	    }
 	
 	    /**
@@ -109,7 +111,7 @@
 	     */
 	    public function error($message, $flash = false)
 	    {
-	        $this->add($message, 'error', $flash);
+	        return $this->add($message, 'error', $flash);
 	    }
 	    
 	    /**
@@ -119,7 +121,16 @@
 	     */
 	    public function all()
 	    {
-	        return session()->get($this->session_key, []);
+	        return new $this->collection()->all();
+	    }
+	    
+	    /**
+	     * Gets all the accumulated notices as a collection object
+	     *
+	     * @return array
+	     */
+	    public function collection() {
+		    return new Collection(session()->get($this->session_key, []));
 	    }
 	
 	    /**
@@ -127,9 +138,19 @@
 	     *
 	     * @return void
 	     */
-	    public function print()
+	    public function print( $item = array() )
 	    {
-		    $output = implode( array_map( [ $this, 'build' ], $this->all() ) );
+		    echo $this->render( $item );
+	    }
+	    
+	    /**
+	     * Renders all the accumulated notices.
+	     *
+	     * @return void
+	     */
+	    public function render( $item = array() ) {
+		    $items = $item ? ( is_array( $item ) ? $item : [$item] ) : $this->all();
+		    $output = implode( array_map( [ $this, 'build' ], $items ) );
 		    $this->clear();
 		    return $output;
 	    }
@@ -141,7 +162,7 @@
 	     */
 	    public function build( $notice = array() ) 
 	    {
-		    if( view()->exists($this->view) ) {
+		    if( view()->exists( $this->view ) ) {
 		    	return view( $this->view, $notice );
 		    } else {
 		    	return sprintf( '<div class="%s"><p>%s</p></div>', $notice['class'], $notice['message'] );
@@ -155,7 +176,7 @@
 	     */
 	    public function clear()
 	    {
-	    	session()->put($this->session_key, []);
+	    	return session()->put($this->session_key, []);
 	    }
 	
 	    /**

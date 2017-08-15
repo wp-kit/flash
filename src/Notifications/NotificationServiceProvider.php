@@ -5,6 +5,7 @@ namespace WPKit\Notifications;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use WPKit\Session\Middleware\StartSession;
+use WPKit\Notifications\Facades\Facade;
 use WPKit\Notifications\Notifiers\FrontendNotifier;
 use WPKit\Notifications\Notifiers\AdminNotifier;
 
@@ -18,6 +19,8 @@ class NotificationServiceProvider extends ServiceProvider
      */
     public function register()
     {
+	    
+	    Facade::setFacadeApplication($this->app);
 		
 		$this->app->instance(
             'frontendNotifier',
@@ -32,22 +35,5 @@ class NotificationServiceProvider extends ServiceProvider
 		Route::aliasMiddleware('web.session', StartSession::class);
         
     }
-    
-    /**
-	* Boot the service provider
-	*
-	* @return void
-	*/
-	public function boot() {
-		
-		$this->publishes([
-			__DIR__.'/../../views/notifiers/frontend.twig' => view_path('notifiers/frontend.twig')
-		], 'views');
-		
-		$this->publishes([
-			__DIR__.'/../../views/notifiers/admin.twig' => view_path('notifiers/admin.twig')
-		], 'views');
-		
-	}
     	
 }
