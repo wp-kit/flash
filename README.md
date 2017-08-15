@@ -214,11 +214,11 @@ This is just a guide of how you use use ```wp-kit/notifications``` when looping 
 
 <div class="row">
 
-	<?php foreach( notifiers('frontend')->all() as $message ) : ?>
+	<?php foreach( notifier('frontend')->all() as $message ) : ?>
 	
 		<div class="column">
 		
-			<?php notifiers( 'frontend' )->print( $message ); ?>
+			<?php notifier( 'frontend' )->print( $message ); ?>
 			
 		</div>
 		
