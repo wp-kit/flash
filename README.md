@@ -16,7 +16,7 @@ If you're using Themosis, install via composer in the Themosis route folder, oth
 composer require "wp-kit/notifications"
 ```
 
-## Registering Service Provider
+## Registering Service Provider & Facades
 
 **Within Themosis Theme**
 
@@ -65,7 +65,6 @@ $provider = new WPKit\Notifications\NotificationServiceProvider($container); // 
 
 $provider->register(); //register service provider
 ```
-
 
 ## Using Notifiers
 
