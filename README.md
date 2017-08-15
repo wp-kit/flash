@@ -18,7 +18,7 @@ composer require "wp-kit/notifications"
 
 ## Setup
 
-## Add Service Provider
+### Add Service Provider
 
 **Within Themosis Theme**
 
