@@ -27,7 +27,8 @@ Just register the service provider and facade in the providers config and theme 
 
 return [
     //
-    Illuminate\Session\SessionServiceProvider::class, // you need this too, if non-Themosis
+    Illuminate\Filesystem\FilesystemServiceProvider::class, specify the driver provider
+    Illuminate\Session\SessionServiceProvider::class, // you need this too, if Non-Themosis
     //WPKit\Session\SessionServiceProvider::class, // use this if Themosis
     WPKit\Notifications\NotificationServiceProvider::class
 ];
@@ -63,9 +64,20 @@ require __DIR__ . '/vendor/autoload.php';
 
 $container = new Illuminate\Container\Container(); // create new app container
 
-$provider = new Illuminate\Session\SessionServiceProvider($container); // inject into service provider
+// DRIVER
+
+$provider = new Illuminate\Filesystem\FilesystemServiceProvider($container); // inject into service provider
+
+// SESSION
 
 $provider->register(); //register service provider
+
+$provider = new Illuminate\Session\SessionServiceProvider($container); // Non-Themosis
+//$provider = new WPKit\Session\SessionServiceProvider($container); // Themosis
+
+$provider->register(); //register service provider
+
+// NOTIFICATIONS
 
 $provider = new WPKit\Notifications\NotificationServiceProvider($container); // inject into service provider
 
