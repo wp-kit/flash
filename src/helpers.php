@@ -69,8 +69,9 @@
 	     */
 	    function resources_path($path = '', $file = '')
 	    {
-		    if( function_exists('themosis_path') ) {
-			    $path = themosis_path('theme' . ( $path ? '.' . $path : ''));
+		    $name = 'theme' . ( $path ? '.' . $path : '');
+		    if( function_exists('themosis_path') && ! empty( $GLOBALS['themosis.paths'][$name] ) ) {
+			    $path = themosis_path($name);
 		    } else {
 			    $path = get_stylesheet_directory() . DS . 'resources' . ( $path ? DS . $path : '' );
 		    }
