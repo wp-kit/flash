@@ -121,7 +121,7 @@
 	     */
 	    public function all()
 	    {
-	        return new $this->collection()->all();
+	        return $this->collection()->all();
 	    }
 	    
 	    /**
