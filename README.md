@@ -90,9 +90,9 @@ $provider->register(); //register service provider
 ]
 ```
 
-### Add Config File
+### Add Config & View File(s)
 
-Although a config file is not required for ```wp-kit/notifications```, one is needed for your SessionProvider.
+Although a config file is not required for ```wp-kit/notifications```, we do need to publish view files and a config is needed for your SessionProvider.
 
 If you are using Themosis, you should [publish the config file](https://github.com/wp-kit/session#config) for ```wp-kit/session```.
 
