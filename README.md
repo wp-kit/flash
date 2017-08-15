@@ -97,7 +97,7 @@ If you are not using Themosis, you should publish the [default config file](http
 
 > **Note:** AdminNotifier automatically outputs notices in admin area using the hook ```admin_notices```
 
-Don't forget to use the [```Illuminate\Session\MiddlewareStartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware. If you are using ```wp-kit/session``` then you can use the alias middleware set on [web.session](https://github.com/wp-kit/session#using-middleware).
+> **Important** Don't forget to use the [```Illuminate\Session\MiddlewareStartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware to ensure notification messages persist. If you are using ```wp-kit/session``` then you can use the alias middleware set on [```web.session```](https://github.com/wp-kit/session#using-middleware).
 
 ### Using Facades
 
