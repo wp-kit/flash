@@ -95,7 +95,7 @@ If you are not using Themosis, you should publish the [default config file](http
 
 ## How to Use
 
-WPKit Notifications are pretty flexible. You can use them anywhere but ideally you should use them in your Controllers. You can use the Facade or the Helper functions:
+> **Note:** AdminNotifier automatically outputs notices in admin area using the hook ```admin_notices```
 
 ### Using Facades
 
@@ -113,13 +113,13 @@ FrontendNotifier::error('What on earth are you doing?');
 
 $messages = FrontendNotifier::all();
 
-$html = FrontendNotifier::print();
+$html = FrontendNotifier::render();
 
-$chained = FrontendNotifier::success('Well done!')->print();
+$chained = FrontendNotifier::success('Well done!')->render();
 
 FrontendNotifier::clear();
 
-echo FrontendNotifier::build([
+FrontendNotifier::print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -132,13 +132,13 @@ AdminNotifier::error('What on earth are you doing?');
 
 $messages = AdminNotifier::all();
 
-$html = AdminNotifier::print();
+$html = AdminNotifier::render();
 
-$chained = AdminNotifier::success('Well done!')->print();
+$chained = AdminNotifier::success('Well done!')->render();
 
 AdminNotifier::clear();
 
-echo AdminNotifier::build([
+AdminNotifier::print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -155,13 +155,13 @@ notifier('frontend')->error('What on earth are you doing?');
 
 $messages = notifier('frontend')->all();
 
-$html = notifier('frontend')->print();
+$html = notifier('frontend')->render();
 
-$chained = notifier('frontend')->success('Well done!')->print();
+$chained = notifier('frontend')->success('Well done!')->render();
 
 notifier('frontend')->clear();
 
-echo notifier('frontend')->build([
+notifier('frontend')->print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -174,13 +174,13 @@ notifier('admin')->error('What on earth are you doing?');
 
 $messages = notifier('admin')->all();
 
-$html = notifier('admin')->print();
+$html = notifier('admin')->render();
 
-$chained = notifier('admin')->success('Well done!')->print();
+$chained = notifier('admin')->success('Well done!')->render();
 
 notifier('admin')->clear();
 
-echo notifier('admin')->build([
+notifier('admin')->print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
