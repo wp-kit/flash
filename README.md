@@ -225,6 +225,7 @@ This is just a guide of how you use use ```wp-kit/notifications``` when looping 
 	<?php endforeach; ?>
 	
 </div>
+```
 
 ## Requirements
 
