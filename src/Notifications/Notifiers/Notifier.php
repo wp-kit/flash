@@ -149,7 +149,8 @@
 	     * @return void
 	     */
 	    public function render( $item = array() ) {
-		    $items = $item ? ( is_array( $item ) ? $item : [$item] ) : $this->all();
+		    $keys = array_keys( $item );
+		    $items = $item ? ( is_numeric( reset( $keys ) ) ? $item : [$item] ) : $this->all();
 		    $output = implode( array_map( [ $this, 'build' ], $items ) );
 		    $this->clear();
 		    return $output;
