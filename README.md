@@ -16,7 +16,9 @@ If you're using Themosis, install via composer in the Themosis route folder, oth
 composer require "wp-kit/notifications"
 ```
 
-## Registering Service Provider & Facades
+## Setup
+
+## Add Service Provider
 
 **Within Themosis Theme**
 
@@ -32,17 +34,6 @@ return [
     //WPKit\Session\SessionServiceProvider::class, // use this if Themosis
     WPKit\Notifications\NotificationServiceProvider::class
 ];
-```
-
-```php
-//inside themosis-theme/resource/config/theme.config.php
-
-'aliases' => [
-    //
-    'AdminNotifier' => WPKit\Notifications\Facades\AdminNotifier::class,
-    'FrontendNotifier' => WPKit\Notifications\Facades\FrontendNotifier::class
-    //
-]
 ```
 
 **Within functions.php**
@@ -85,7 +76,21 @@ $provider = new WPKit\Notifications\NotificationServiceProvider($container); // 
 
 $provider->register(); //register service provider
 ```
-## Config
+
+### Add Facade (Themosis Only)
+
+```php
+//inside themosis-theme/resource/config/theme.config.php
+
+'aliases' => [
+    //
+    'AdminNotifier' => WPKit\Notifications\Facades\AdminNotifier::class,
+    'FrontendNotifier' => WPKit\Notifications\Facades\FrontendNotifier::class
+    //
+]
+```
+
+### Add Config File
 
 Although a config file is not required for ```wp-kit/notifications```, one is needed for your SessionProvider.
 
@@ -93,7 +98,7 @@ If you are using Themosis, you should [publish the config file](https://github.c
 
 If you are not using Themosis, you should publish the [default config file](https://github.com/laravel/laravel/blob/master/config/session.php) from Laravel and customise it accordingly. 
 
-## How to Use
+## Usage
 
 > **Note:** AdminNotifier automatically outputs notices in admin area using the hook ```admin_notices```
 
