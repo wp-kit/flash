@@ -44,7 +44,7 @@ return [
 ]
 ```
 
-### Config
+## Config
 
 Although a config file is not required for ```wp-kit/notifications```, one is needed for your SessionProvider.
 
