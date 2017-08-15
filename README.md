@@ -44,14 +44,6 @@ return [
 ]
 ```
 
-## Config
-
-Although a config file is not required for ```wp-kit/notifications```, one is needed for your SessionProvider.
-
-If you are using Themosis, you should [publish the config file](https://github.com/wp-kit/session#config) for ```wp-kit/session```.
-
-If you are not using Themosis, you should publish the [default config file](https://github.com/laravel/laravel/blob/master/config/session.php) from Laravel and customise it accordingly. 
-
 **Within functions.php**
 
 If you are just using this component standalone then add the following the functions.php
@@ -79,6 +71,13 @@ $provider = new WPKit\Notifications\NotificationServiceProvider($container); // 
 
 $provider->register(); //register service provider
 ```
+## Config
+
+Although a config file is not required for ```wp-kit/notifications```, one is needed for your SessionProvider.
+
+If you are using Themosis, you should [publish the config file](https://github.com/wp-kit/session#config) for ```wp-kit/session```.
+
+If you are not using Themosis, you should publish the [default config file](https://github.com/laravel/laravel/blob/master/config/session.php) from Laravel and customise it accordingly. 
 
 ## Using Notifiers
 
