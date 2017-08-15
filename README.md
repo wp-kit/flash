@@ -208,7 +208,7 @@ Alternatively, you can place the [view file(s)](views) in your ```theme/resource
 
 This is just a guide of how you use use ```wp-kit/notifications``` when looping through a load of messages where you need to output markup around each notification:
 
-```php
+```html
 
 // within theme/resources/views/some-view.php
 
