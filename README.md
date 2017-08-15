@@ -68,6 +68,8 @@ $container = new Illuminate\Container\Container(); // create new app container
 
 $provider = new Illuminate\Filesystem\FilesystemServiceProvider($container); // inject into service provider
 
+$provider->register(); //register service provider
+
 // SESSION
 
 $provider->register(); //register service provider
