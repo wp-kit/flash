@@ -93,14 +93,13 @@ If you are using Themosis, you should [publish the config file](https://github.c
 
 If you are not using Themosis, you should publish the [default config file](https://github.com/laravel/laravel/blob/master/config/session.php) from Laravel and customise it accordingly. 
 
-## Using Notifiers
+## How to Use
 
 WPKit Notifications are pretty flexible. You can use them anywhere but ideally you should use them in your Controllers. You can use the Facade or the Helper functions:
 
-### Facades
+### Using Facades
 
 ```php
-
 // Just in case you need to include the Facade in a custom namespace
 
 use WPKit\Notifications\Facades\AdminNotifier;
@@ -145,10 +144,9 @@ echo AdminNotifier::build([
 ]);
 ```
 
-### Helper Function
+### Using Helper Function
 
 ```php
-
 // Frontend
 
 notifier('frontend')->success('Well done!');
