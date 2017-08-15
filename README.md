@@ -27,8 +27,8 @@ Just register the service provider and facade in the providers config and theme 
 
 return [
     //
-    Illuminate\Session\SessionServiceProvider::class, // you need this too
-    //WPKit\Session\SessionServiceProvider::class, // use this session provider instead of above if you are using Themosis
+    Illuminate\Session\SessionServiceProvider::class, // you need this too, if non-Themosis
+    //WPKit\Session\SessionServiceProvider::class, // use this if Themosis
     WPKit\Notifications\NotificationServiceProvider::class
 ];
 ```
