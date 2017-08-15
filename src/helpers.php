@@ -70,11 +70,11 @@
 	    function resources_path($path = '', $file = '')
 	    {
 		    if( function_exists('themosis_path') ) {
-			    $path = themosis_path('theme.resources' . ( $path ? '.' . $path : '' ));
+			    $root = themosis_path('theme.resources');
 		    } else {
-			    $path = get_stylesheet_directory() . DS . 'resources' . ( $path ? DS . $path : '' );
+			    $root = get_stylesheet_directory() . DS . 'resources';
 		    }
-		    return $path . ltrim( ( $file ? DS . $file : '' ), DS );
+		    return $root . ( $path ? DS . $path : '' ) . ltrim( ( $file ? DS . $file : '' ), DS );
 	    }
 	}
 	
