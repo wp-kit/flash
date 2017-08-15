@@ -97,16 +97,95 @@ If you are not using Themosis, you should publish the [default config file](http
 
 WPKit Notifications are pretty flexible. You can use them anywhere but ideally you should use them in your Controllers. You can use the Facade or the Helper functions:
 
+### Facades
+
 ```php
+
+// Just in case you need to include the Facade in a custom namespace
 
 use WPKit\Notifications\Facades\AdminNotifier;
 use WPKit\Notifications\Facades\FrontendNotifier;
 
-// as php function as below
+// Frontend
 
-// using facade
+FrontendNotifier::success('Well done!');
+FrontendNotifier::warning('Hmm, not sure about that...');
+FrontendNotifier::error('What on earth are you doing?');
 
+$messages = FrontendNotifier::all();
 
+$html = FrontendNotifier::print();
+
+$chained = FrontendNotifier::success('Well done!')->print();
+
+FrontendNotifier::clear();
+
+echo FrontendNotifier::build([
+	'message' => 'Ooh, living dangerously are we?'
+	'class' => 'some-classname'
+]);
+
+// Admin
+
+AdminNotifier::success('Well done!');
+AdminNotifier::warning('Hmm, not sure about that...');
+AdminNotifier::error('What on earth are you doing?');
+
+$messages = AdminNotifier::all();
+
+$html = AdminNotifier::print();
+
+$chained = AdminNotifier::success('Well done!')->print();
+
+AdminNotifier::clear();
+
+echo AdminNotifier::build([
+	'message' => 'Ooh, living dangerously are we?'
+	'class' => 'some-classname'
+]);
+```
+
+### Helper Function
+
+```php
+
+// Frontend
+
+notifier('frontend')->success('Well done!');
+notifier('frontend')->warning('Hmm, not sure about that...');
+notifier('frontend')->error('What on earth are you doing?');
+
+$messages = notifier('frontend')->all();
+
+$html = notifier('frontend')->print();
+
+$chained = notifier('frontend')->success('Well done!')->print();
+
+notifier('frontend')->clear();
+
+echo notifier('frontend')->build([
+	'message' => 'Ooh, living dangerously are we?'
+	'class' => 'some-classname'
+]);
+
+// Admin
+
+notifier('admin')->success('Well done!');
+notifier('admin')->warning('Hmm, not sure about that...');
+notifier('admin')->error('What on earth are you doing?');
+
+$messages = notifier('admin')->all();
+
+$html = notifier('admin')->print();
+
+$chained = notifier('admin')->success('Well done!')->print();
+
+notifier('admin')->clear();
+
+echo notifier('admin')->build([
+	'message' => 'Ooh, living dangerously are we?'
+	'class' => 'some-classname'
+]);
 ```
 
 ## Handling the Output
