@@ -26,7 +26,7 @@ Just register the service provider and facade in the providers config and theme 
 //inside themosis-theme/resources/config/providers.config.php
 
 return [
-    Theme\Providers\RoutingService::class,
+    \\
     WPKit\Notifications\NotificationServiceProvider::class
 ];
 ```
