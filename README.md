@@ -186,18 +186,45 @@ notifier('admin')->print([
 ]);
 ```
 
-## Handling the Output
+## Views
+
+### Installation
+
+The recommended method of installing view files for ```wp-kit/notifications``` is via ```wp-kit/vendor-publish``` command.
+
+First, [install WP CLI](http://wp-cli.org/), and then install the package via:
+
+```wp package install wp-kit/vendor-publish```
+
+Once installed you can run:
+
+```wp kit vendor:publish```
+
+For more information, please visit [wp-kit/vendor-publish](https://github.com/wp-kit/vendor-publish).
+
+Alternatively, you can place the [view file(s)](views) in your ```theme/resources/views``` directory manually.
+
+### Looping through messages
+
+This is just a guide of how you use use ```wp-kit/notifications``` when looping through a load of messages where you need to output markup around each notification:
 
 ```php
 
-<some>
+// within theme/resources/views/some-view.php
 
-	<html></html>
+<div class="row">
+
+	<?php foreach( notifiers('frontend')->all() as $message ) : ?>
 	
-</some>
-
-
-```
+		<div class="column">
+		
+			<?php notifiers( 'frontend' )->print( $message ); ?>
+			
+		</div>
+		
+	<?php endforeach; ?>
+	
+</div>
 
 ## Requirements
 
