@@ -32,5 +32,22 @@ class NotificationServiceProvider extends ServiceProvider
 		Route::aliasMiddleware('web.session', StartSession::class);
         
     }
+    
+    /**
+	* Boot the service provider
+	*
+	* @return void
+	*/
+	public function boot() {
+		
+		$this->publishes([
+			__DIR__.'/../../views/notifiers/frontend.twig' => view_path('notifiers/frontend.twig')
+		], 'views');
+		
+		$this->publishes([
+			__DIR__.'/../../views/notifiers/admin.twig' => view_path('notifiers/admin.twig')
+		], 'views');
+		
+	}
     	
 }
