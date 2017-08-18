@@ -1,13 +1,13 @@
 <?php 
 	
-	namespace WPKit\Notifications\Notifiers;
+	namespace WPKit\Flash\Flashers;
 
-	class AdminNotifier extends Notifier {
+	class AdminFlash extends Flash {
 	
 	    /**
-	     * The notifier instance.
+	     * The flash instance.
 	     *
-	     * @var \WPKit\Notifications\Notifiers\FrontEndNotiifier
+	     * @var \WPKit\Flash\Flashers\AdminFlash
 	     */
 	    protected static $instance;
 	    
@@ -16,17 +16,17 @@
 	     *
 	     * @var string
 	     */
-	    protected $session_key = '__wpkit_admin_notifications';
+	    protected $session_key = '__wpkit_admin_flash';
 	    
 	    /**
 	     * The view file.
 	     *
 	     * @var string
 	     */
-	    protected $view = 'notifiers/admin';
+	    protected $view = 'flash/admin';
 	    
 	    /**
-	     * Runs actions of Notifer
+	     * Runs actions of Flash
 	     *
 	     * return void
 	     */

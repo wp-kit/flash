@@ -1,19 +1,19 @@
-# WPKit Notifications
+# WPKit Flash
 
-This is a Wordpress PHP Component that handles both Frontend and Admin Notifications.
+This is a Wordpress PHP Component that handles both Frontend and Admin Flashes.
 
 This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
 
-Often, Wordpress developers want to be able to use a single component the handle notifications stored in the session and their output to the client, usually after a redirect. 
+Often, Wordpress developers want to be able to use a single component the handle flashes stored in the session and their output to the client, usually after a redirect. 
 
-In Wordpress we do have the ability to forge admin notices via some hooks but there a few hoops to jump through in that you have to write quite a bit of code to handle the session storage and the output, and currently there are no hooks for front-end notifications.
+In Wordpress we do have the ability to forge admin notices via some hooks but there a few hoops to jump through in that you have to write quite a bit of code to handle the session storage and the output, and currently there are no hooks for front-end flashes.
 
 ## Installation
 
 If you're using Themosis, install via composer in the Themosis route folder, otherwise install in your theme folder:
 
 ```php
-composer require "wp-kit/notifications"
+composer require "wp-kit/flash"
 ```
 
 ## Setup
@@ -32,7 +32,7 @@ return [
     Illuminate\Filesystem\FilesystemServiceProvider::class, // specify the driver provider
     Illuminate\Session\SessionServiceProvider::class, // you need this too, if Non-Themosis
     //WPKit\Session\SessionServiceProvider::class, // use this if Themosis
-    WPKit\Notifications\NotificationServiceProvider::class
+    WPKit\Flash\FlashServiceProvider::class
 ];
 ```
 
@@ -72,7 +72,7 @@ $provider->register(); //register service provider
 
 // NOTIFICATIONS
 
-$provider = new WPKit\Notifications\NotificationServiceProvider($container); // inject into service provider
+$provider = new WPKit\Flash\FlashServiceProvider($container); // inject into service provider
 
 $provider->register(); //register service provider
 ```
@@ -84,17 +84,17 @@ $provider->register(); //register service provider
 
 'aliases' => [
     //
-    'AdminNotifier' => WPKit\Notifications\Facades\AdminNotifier::class,
-    'FrontendNotifier' => WPKit\Notifications\Facades\FrontendNotifier::class
+    'AdminFlash' => WPKit\Flash\Facades\AdminFlash::class,
+    'FrontendFlash' => WPKit\Flash\Facades\FrontendFlash::class
     //
 ]
 ```
 
 ### Add Config & View File(s)
 
-Although a config file is not required for ```wp-kit/notifications```, we do need to publish view files and a config is needed for your SessionProvider.
+Although a config file is not required for ```wp-kit/flash```, we do need to publish view files and a config is needed for your SessionProvider.
 
-The recommended method of installing view files for ```wp-kit/notifications``` is via ```wp-kit/vendor-publish``` command.
+The recommended method of installing view files for ```wp-kit/flash``` is via ```wp-kit/vendor-publish``` command.
 
 First, [install WP CLI](http://wp-cli.org/), and then install the package via:
 
@@ -114,52 +114,52 @@ If you are not using Themosis, you should publish the [default config file](http
 
 ## Usage
 
-> **Note:** AdminNotifier automatically outputs notices in admin area using the hook ```admin_notices```
+> **Note:** AdminFlash automatically outputs notices in admin area using the hook ```admin_notices```
 
-> **Important** Don't forget to use the [```Illuminate\Session\MiddlewareStartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware to ensure notification messages persist. If you are using ```wp-kit/session``` then you can use the alias middleware set on [```web.session```](https://github.com/wp-kit/session#using-middleware).
+> **Important** Don't forget to use the [```Illuminate\Session\MiddlewareStartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware to ensure flashes persist. If you are using ```wp-kit/session``` then you can use the alias middleware set on [```web.session```](https://github.com/wp-kit/session#using-middleware).
 
 ### Using Facades
 
 ```php
 // Just in case you need to include the Facade in a custom namespace
 
-use WPKit\Notifications\Facades\AdminNotifier;
-use WPKit\Notifications\Facades\FrontendNotifier;
+use WPKit\Flash\Facades\AdminFlash;
+use WPKit\Flash\Facades\FrontendFlash;
 
 // Frontend
 
-FrontendNotifier::success('Well done!');
-FrontendNotifier::warning('Hmm, not sure about that...');
-FrontendNotifier::error('What on earth are you doing?');
+FrontendFlash::success('Well done!');
+FrontendFlash::warning('Hmm, not sure about that...');
+FrontendFlash::error('What on earth are you doing?');
 
-$messages = FrontendNotifier::all();
+$messages = FrontendFlash::all();
 
-$html = FrontendNotifier::render();
+$html = FrontendFlash::render();
 
-$chained = FrontendNotifier::success('Well done!')->render();
+$chained = FrontendFlash::success('Well done!')->render();
 
-FrontendNotifier::clear();
+FrontendFlash::clear();
 
-FrontendNotifier::print([
+FrontendFlash::print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
 
 // Admin
 
-AdminNotifier::success('Well done!');
-AdminNotifier::warning('Hmm, not sure about that...');
-AdminNotifier::error('What on earth are you doing?');
+AdminFlash::success('Well done!');
+AdminFlash::warning('Hmm, not sure about that...');
+AdminFlash::error('What on earth are you doing?');
 
-$messages = AdminNotifier::all();
+$messages = AdminFlash::all();
 
-$html = AdminNotifier::render();
+$html = AdminFlash::render();
 
-$chained = AdminNotifier::success('Well done!')->render();
+$chained = AdminFlash::success('Well done!')->render();
 
-AdminNotifier::clear();
+AdminFlash::clear();
 
-AdminNotifier::print([
+AdminFlash::print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -170,38 +170,38 @@ AdminNotifier::print([
 ```php
 // Frontend
 
-notifier('frontend')->success('Well done!');
-notifier('frontend')->warning('Hmm, not sure about that...');
-notifier('frontend')->error('What on earth are you doing?');
+flash('frontend')->success('Well done!');
+flash('frontend')->warning('Hmm, not sure about that...');
+flash('frontend')->error('What on earth are you doing?');
 
-$messages = notifier('frontend')->all();
+$messages = flash('frontend')->all();
 
-$html = notifier('frontend')->render();
+$html = flash('frontend')->render();
 
-$chained = notifier('frontend')->success('Well done!')->render();
+$chained = flash('frontend')->success('Well done!')->render();
 
-notifier('frontend')->clear();
+flash('frontend')->clear();
 
-notifier('frontend')->print([
+flash('frontend')->print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
 
 // Admin
 
-notifier('admin')->success('Well done!');
-notifier('admin')->warning('Hmm, not sure about that...');
-notifier('admin')->error('What on earth are you doing?');
+flash('admin')->success('Well done!');
+flash('admin')->warning('Hmm, not sure about that...');
+flash('admin')->error('What on earth are you doing?');
 
-$messages = notifier('admin')->all();
+$messages = flash('admin')->all();
 
-$html = notifier('admin')->render();
+$html = flash('admin')->render();
 
-$chained = notifier('admin')->success('Well done!')->render();
+$chained = flash('admin')->success('Well done!')->render();
 
-notifier('admin')->clear();
+flash('admin')->clear();
 
-notifier('admin')->print([
+flash('admin')->print([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -209,7 +209,7 @@ notifier('admin')->print([
 
 ### Looping through messages
 
-This is just a guide of how you use use ```wp-kit/notifications``` when looping through a load of messages where you need to output markup around each notification:
+This is just a guide of how you use use ```wp-kit/flash``` when looping through a load of messages where you need to output markup around each flash:
 
 ```html
 
@@ -217,11 +217,11 @@ This is just a guide of how you use use ```wp-kit/notifications``` when looping 
 
 <div class="row">
 
-	<?php foreach( notifier('frontend')->all() as $message ) : ?>
+	<?php foreach( flash('frontend')->all() as $message ) : ?>
 	
 		<div class="column">
 		
-			<?php notifier( 'frontend' )->print( $message ); ?>
+			<?php flash( 'frontend' )->print( $message ); ?>
 			
 		</div>
 		
@@ -238,4 +238,4 @@ PHP 5.6+
 
 ## License
 
-WPKit Notifications is open-sourced software licensed under the MIT License.
+WPKit Flash is open-sourced software licensed under the MIT License.

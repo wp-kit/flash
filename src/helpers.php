@@ -1,15 +1,15 @@
 <?php
 	
-	if ( ! function_exists('notifier') ) {
+	if ( ! function_exists('flash') ) {
 	    /**
 	     * Gets the notifier object
 	     *
-	     * @param  string $notifier
-	     * @return \WPKit\Notifications\Notifiers\Notifier
+	     * @param  string $flasher
+	     * @return \WPKit\Flash\Flashers\Flash
 	     */
-	    function notifier($notifier = 'frontend')
+	    function flash($flasher = 'frontend')
 	    {
-	        return app($notifier.'Notifier');
+	        return app($flasher.'Flash');
 	    }
 		
 	}

@@ -1,15 +1,15 @@
 <?php 
 	
-	namespace WPKit\Notifications\Notifiers;
+	namespace WPKit\Flash\Flashers;
 	
 	use Illuminate\Support\Collection;
 
-	class Notifier {
+	class Flash {
 	
 	    /**
-	     * The notifier instance.
+	     * The flash instance.
 	     *
-	     * @var \WPKit\Notifications\Notifiers\Notifier
+	     * @var \WPKit\Flash\Flashers\Flash
 	     */
 	    protected static $instance;
 	    
@@ -18,10 +18,10 @@
 	     *
 	     * @var string
 	     */
-	    protected $session_key = '__wpkit_notifications';
+	    protected $session_key = '__wpkit_flash';
 	    
 	    /**
-	     * The notifier classes.
+	     * The flash classes.
 	     *
 	     * @var array
 	     */
@@ -32,7 +32,7 @@
 	    ];
 	
 	    /**
-	     * Constructs the Notifier.
+	     * Constructs the Flash.
 	     */
 	    public function __construct()
 	    {
@@ -51,18 +51,18 @@
 	     */
 	    public function add($message, $type = 'success')
 	    {
-	        $notification = [
+	        $flash = [
 	            'message' => $message,
 	            'class'   => $this->className( $type )
 	        ];;
 	
-	        session()->push($this->session_key, $notification);
+	        session()->push($this->session_key, $flash);
 	        
 	        return $this;
 	    }
 	    
 	    /**
-	     * Runs actions of Notifer
+	     * Runs actions of Flash
 	     *
 	     * return void
 	     */
@@ -157,7 +157,7 @@
 	    }
 	    
 	    /**
-	     * Get Notifier Template
+	     * Get Flash Template
 	     *
 	     * @return string
 	     */

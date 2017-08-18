@@ -1,8 +1,8 @@
 <?php
 
-	namespace WPKit\Notifications\Facades;
+	namespace WPKit\Flash\Facades;
 	
-	class FrontendNotifier extends Facade {
+	class AdminFlash extends Flash {
 		
 	    /**
 	     * Get the registered name of the component.
@@ -11,7 +11,7 @@
 	     */
 	    protected static function getFacadeAccessor()
 	    {
-	        return 'frontendNotifier';
+	        return 'adminFlash';
 	    }
 	    
 	}

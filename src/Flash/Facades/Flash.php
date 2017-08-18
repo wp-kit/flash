@@ -1,10 +1,10 @@
 <?php
 
-	namespace WPKit\Notifications\Facades;
+	namespace WPKit\Flash\Facades;
 	
-	use Illuminate\Support\Facades\Facade as BaseFacade;
+	use Illuminate\Support\Facades\Facade;
 	
-	class Facade extends BaseFacade {
+	class Flash extends Facade {
 		
 	    /**
 	     * Print the notifications

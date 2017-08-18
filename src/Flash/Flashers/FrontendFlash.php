@@ -1,13 +1,13 @@
 <?php 
 	
-	namespace WPKit\Notifications\Notifiers;
+	namespace WPKit\Flash\Flashers;
 
-	class FrontendNotifier extends Notifier {
+	class FrontendFlash extends Flash {
 	
 	    /**
-	     * The notifier instance.
+	     * The flash instance.
 	     *
-	     * @var \WPKit\Notifications\Notifiers\FrontEndNotiifier
+	     * @var \WPKit\Flash\Flashers\FrontEndFlash
 	     */
 	    protected static $instance;
 	    
@@ -16,17 +16,17 @@
 	     *
 	     * @var string
 	     */
-	    protected $session_key = '__wpkit_frontend_notifications';
+	    protected $session_key = '__wpkit_frontend_flash';
 	    
 	    /**
 	     * The view file.
 	     *
 	     * @var string
 	     */
-	    protected $view = 'notifiers/frontend';
+	    protected $view = 'flash/frontend';
 	    
 	    /**
-	     * The notifier classes.
+	     * The flash classes.
 	     *
 	     * @var array
 	     */

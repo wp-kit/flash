@@ -1,8 +1,8 @@
 {
-	"name": "wp-kit/notifications",
-	"description": "A Wordpress PHP Component that handles frontend and admin notifications",
+	"name": "wp-kit/flash",
+	"description": "A Wordpress PHP Component that handles frontend and admin flashes",
 	"keywords": ["wordpress", "themosis", "oop", "notifications"],
-	"homepage" : "https://github.com/wp-kit/notifications",
+	"homepage" : "https://github.com/wp-kit/flash",
 	"license": "MIT",
 	"authors": [
 		{
@@ -21,7 +21,7 @@
 	"type": "library",
 	"autoload": {
         "psr-4": {
-            "WPKit\\Notifications\\": "src/Notifications" 
+            "WPKit\\Flash\\": "src/Flash" 
         },
         "files": [
             "src/helpers.php"
