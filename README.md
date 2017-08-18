@@ -70,7 +70,7 @@ $provider = new Illuminate\Session\SessionServiceProvider($container); // Non-Th
 
 $provider->register(); //register service provider
 
-// NOTIFICATIONS
+// FLASHES
 
 $provider = new WPKit\Flash\FlashServiceProvider($container); // inject into service provider
 
