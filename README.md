@@ -2,7 +2,7 @@
 
 This is a Wordpress PHP Component that handles both Frontend and Admin Flashes.
 
-This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as Themosis.
+This PHP Component was built to run within an Illuminate Container so is perfect for frameworks such as ```Themosis```.
 
 Often, Wordpress developers want to be able to use a single component the handle flashes stored in the session and their output to the client, usually after a redirect. 
 
@@ -10,7 +10,7 @@ In Wordpress we do have the ability to forge admin notices via some hooks but th
 
 ## Installation
 
-If you're using ```Themosis```, install via composer in the Themosis route folder, otherwise install in your theme folder:
+If you're using ```Themosis```, install via composer in the ```Themosis``` route folder, otherwise install in your theme folder:
 
 ```php
 composer require "wp-kit/flash"
