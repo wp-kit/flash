@@ -16,7 +16,8 @@
         "php": ">=5.6.4",
         "illuminate/container": "5.*",
 	"wp-kit/session": "dev-master",
-	"illuminate/view": "5.*"
+	"illuminate/view": "5.*",
+	"wp-kit/utils": "dev-master"
     },
 	"type": "library",
 	"autoload": {
