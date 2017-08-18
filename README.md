@@ -10,7 +10,7 @@ In Wordpress we do have the ability to forge admin notices via some hooks but th
 
 ## Installation
 
-If you're using ```Themosis```, install via composer in the ```Themosis``` route folder, otherwise install in your theme folder:
+If you're using ```Themosis```, install via ```Composer``` in the ```Themosis``` route folder, otherwise install in your ```Composer``` driven theme folder:
 
 ```php
 composer require "wp-kit/flash"
