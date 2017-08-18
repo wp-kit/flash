@@ -1,4 +1,4 @@
-# WPKit Flash
+# wp-kit/flash
 
 This is a Wordpress PHP Component that handles both Frontend and Admin Flashes.
 
@@ -10,7 +10,7 @@ In Wordpress we do have the ability to forge admin notices via some hooks but th
 
 ## Installation
 
-If you're using Themosis, install via composer in the Themosis route folder, otherwise install in your theme folder:
+If you're using ```Themosis```, install via composer in the Themosis route folder, otherwise install in your theme folder:
 
 ```php
 composer require "wp-kit/flash"
@@ -92,7 +92,7 @@ $provider->register(); //register service provider
 
 ### Add Config & View File(s)
 
-Although a config file is not required for ```wp-kit/flash```, we do need to publish view files and a config is needed for your SessionProvider.
+Although a config file is not required for ```wp-kit/flash```, we do need to publish view files and a config is needed for your ```SessionProvider```.
 
 The recommended method of installing view files for ```wp-kit/flash``` is via ```wp-kit/vendor-publish``` command.
 
@@ -108,13 +108,13 @@ For more information, please visit [wp-kit/vendor-publish](https://github.com/wp
 
 Alternatively, you can place the [view file(s)](views) in your ```theme/resources/views``` directory manually.
 
-If you are using Themosis, you should [publish the config file](https://github.com/wp-kit/session#add-config-file) for ```wp-kit/session```.
+If you are using ```Themosis```, you should [publish the config file](https://github.com/wp-kit/session#add-config-file) for ```wp-kit/session```.
 
-If you are not using Themosis, you should publish the [default config file](https://github.com/laravel/laravel/blob/master/config/session.php) from Laravel and customise it accordingly. 
+If you are not using ```Themosis```, you should publish the [default config file](https://github.com/laravel/laravel/blob/master/config/session.php) from Laravel and customise it accordingly. 
 
 ## Usage
 
-> **Note:** AdminFlash automatically outputs notices in admin area using the hook ```admin_notices```
+> **Note:** ```AdminFlash``` automatically outputs notices in admin area using the hook ```admin_notices```
 
 > **Important** Don't forget to use the [```Illuminate\Session\MiddlewareStartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware to ensure flashes persist. If you are using ```wp-kit/session``` then you can use the alias middleware set on [```web.session```](https://github.com/wp-kit/session#using-middleware).
 
@@ -209,7 +209,7 @@ flash('admin')->print([
 
 ### Looping through messages
 
-This is just a guide of how you use use ```wp-kit/flash``` when looping through a load of messages where you need to output markup around each flash:
+This is just a guide of how you use use ```wp-kit/flash``` when looping through a load of flashes where you need to output markup around each flash:
 
 ```html
 
@@ -238,4 +238,4 @@ PHP 5.6+
 
 ## License
 
-WPKit Flash is open-sourced software licensed under the MIT License.
+wp-kit/flash is open-sourced software licensed under the MIT License.
