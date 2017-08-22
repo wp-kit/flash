@@ -1,6 +1,6 @@
 # wp-kit/flash
 
-This is a Wordpress PHP Component that handles both Frontend and Admin Flashes.
+This is a Wordpress PHP Component that handles both Frontend and Admin Flash Notifications.
 
 This PHP Component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/).
 
