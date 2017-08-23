@@ -4,7 +4,6 @@ namespace WPKit\Flash;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use WPKit\Session\Middleware\StartSession;
 use WPKit\Flash\Facades\Flash;
 use WPKit\Flash\Flashers\FrontendFlash;
 use WPKit\Flash\Flashers\AdminFlash;
@@ -31,8 +30,6 @@ class FlashServiceProvider extends ServiceProvider
             'adminFlash',
             $this->app->make(AdminFlash::class)
         );
-			
-		Route::aliasMiddleware('web.session', StartSession::class);
         
     }
     	
