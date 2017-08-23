@@ -30,8 +30,7 @@ Just register the service provider and facade in the providers config and theme 
 return [
     //
     Illuminate\Filesystem\FilesystemServiceProvider::class, // specify the driver provider
-    Illuminate\Session\SessionServiceProvider::class, // you need this too, if Non-Themosis
-    //WPKit\Session\SessionServiceProvider::class, // use this if Themosis
+    Illuminate\Session\SessionServiceProvider::class, // you need this too
     WPKit\Flash\FlashServiceProvider::class
 ];
 ```
