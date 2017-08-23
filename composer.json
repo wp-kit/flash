@@ -14,7 +14,7 @@
 	],
 	"require": {
         "php": ">=5.6.4",
-	"illuminate/session": "dev-master",
+	"illuminate/session": "5.*",
 	"illuminate/view": "5.*",
 	"wp-kit/utils": "dev-master"
     },
