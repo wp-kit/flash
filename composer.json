@@ -1,6 +1,6 @@
 {
 	"name": "wp-kit/flash",
-	"description": "A wp-kit component that handles frontend and admin flashes",
+	"description": "A wp-kit component that handles frontend and admin flash notifications",
 	"keywords": ["wordpress", "themosis", "oop", "notifications"],
 	"homepage" : "https://github.com/wp-kit/flash",
 	"license": "MIT",
