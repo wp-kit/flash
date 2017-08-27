@@ -35,7 +35,7 @@
 	     * Constructs the Flash.
 	     */
 	    public function __construct()
-	    {
+	    { 
 	        if ( ! self::$instance)
 	        {
 	            self::$instance = $this;
@@ -141,6 +141,7 @@
 	    public function print( $item = array() )
 	    {
 		    echo $this->render( $item );
+		    $this->clear();
 	    }
 	    
 	    /**
@@ -154,7 +155,6 @@
 		    $keys = array_keys( $item );
 		    $items = $item ? ( is_numeric( reset( $keys ) ) ? $item : [$item] ) : $this->all();
 		    $output = implode( array_map( [ $this, 'build' ], $items ) );
-		    $this->clear();
 		    return $output;
 		    
 	    }
