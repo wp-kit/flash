@@ -27,8 +27,9 @@ Just register the service provider and facade in your providers config:
 
 return [
     //
+    WPKit\Config\ConfigServiceProvider::class, // we need this too,
     Illuminate\Filesystem\FilesystemServiceProvider::class, // specify the driver provider
-    Illuminate\Session\SessionServiceProvider::class, // you need this too
+    Illuminate\Session\SessionServiceProvider::class, // we need this too
     WPKit\Flash\FlashServiceProvider::class
 ];
 ```
