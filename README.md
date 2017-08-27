@@ -1,8 +1,8 @@
 # wp-kit/flash
 
-This is a Wordpress PHP Component that handles both Frontend and Admin Flash Notifications.
+This is a wp-kit component that handles both frontend and admin flash notifications.
 
-This PHP Component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/).
+This component was built to run within an [```Illuminate\Container\Container```](https://github.com/illuminate/container/blob/master/Container.php) so is perfect for frameworks such as [```Themosis```](http://framework.themosis.com/), [```Assely```](https://assely.org/) and [```wp-kit/theme```](https://github.com/wp-kit/theme)
 
 Often, Wordpress developers want to be able to use a single component the handle flashes stored in the session and their output to the client, usually after a redirect. 
 
@@ -20,12 +20,10 @@ composer require "wp-kit/flash"
 
 ### Add Service Provider
 
-**Within Themosis Theme**
-
-Just register the service provider and facade in the providers config and theme config:
+Just register the service provider and facade in your providers config:
 
 ```php
-//inside themosis-theme/resources/config/providers.config.php
+//inside theme/resources/config/providers.config.php
 
 return [
     //
@@ -35,51 +33,12 @@ return [
 ];
 ```
 
-**Within functions.php**
+### Add Facade
 
-If you are just using this component standalone then add the following the functions.php
-
-```php
-// within functions.php
-
-// make sure composer has been installed
-if( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-	
-	wp_die('Composer has not been installed, try running composer', 'Dependancy Error');
-	
-}
-
-// Use composer to load the autoloader.
-require __DIR__ . '/vendor/autoload.php';
-
-$container = new Illuminate\Container\Container(); // create new app container
-
-// DRIVER
-
-$provider = new Illuminate\Filesystem\FilesystemServiceProvider($container); // inject into service provider
-
-$provider->register(); //register service provider
-
-// SESSION
-
-$provider->register(); //register service provider
-
-$provider = new Illuminate\Session\SessionServiceProvider($container); // Non-Themosis
-//$provider = new WPKit\Session\SessionServiceProvider($container); // Themosis
-
-$provider->register(); //register service provider
-
-// FLASHES
-
-$provider = new WPKit\Flash\FlashServiceProvider($container); // inject into service provider
-
-$provider->register(); //register service provider
-```
-
-### Add Facade (Themosis Only)
+If you are using Themosis or another ```Iluminate``` driven framework, you may want to add ```Facades```, simply add them to your aliases:
 
 ```php
-//inside themosis-theme/resource/config/theme.config.php
+//inside theme/resource/config/theme.config.php
 
 'aliases' => [
     //
@@ -115,7 +74,22 @@ If you are not using ```Themosis```, you should publish the [default config file
 
 > **Note:** [```AdminFlash```](https://github.com/wp-kit/flash/blob/master/src/Flash/Flashers/AdminFlash.php) automatically outputs notices in admin area using the hook [```admin_notices```](https://codex.wordpress.org/Plugin_API/Action_Reference/admin_notices).
 
-> **Important** Don't forget to use the [```Illuminate\Session\MiddlewareStartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware to ensure flashes persist. If you are using ```wp-kit/session``` then you can use the alias middleware set on [```web.session```](https://github.com/wp-kit/session#using-middleware).
+> **Important** Don't forget to use the [```Illuminate\Session\Middleware\StartSession```](https://github.com/illuminate/session/blob/master/Middleware/StartSession.php) middleware to ensure flashes persist.
+
+```php
+use Themosis\Facades\Route;
+use Illuminate\Session\Middleware\StartSession;
+
+Route::group([
+    'namespace' => 'Theme\Controllers',
+    'middleware' => [
+	StartSession::class, 
+	'auth.form'
+    ]
+], function () {
+    require themosis_path('theme.resources').'routes.php';
+});	
+```
 
 ### Using Facades
 
