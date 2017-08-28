@@ -14,10 +14,10 @@
 	],
 	"require": {
         "php": ">=5.6.4",
-		"wp-kit/config": "dev-master",
+		"wp-kit/config": "2.*",
 	"illuminate/session": "5.*",
 	"illuminate/view": "5.*",
-	"wp-kit/utils": "dev-master"
+	"wp-kit/utils": "2.*"
     },
 	"type": "library",
 	"autoload": {
@@ -27,12 +27,5 @@
         "files": [
             "src/helpers.php"
         ]
-    },
-    "config": {
-		"preferred-install": "dist"
-	},
-	"repositories": [
-	],
-	"scripts": {
-	}
+    }
 }
