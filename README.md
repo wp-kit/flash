@@ -61,7 +61,7 @@ First, [install WP CLI](http://wp-cli.org/), and then install this component, ``
 
 For more information, please visit [```wp-kit/utils```](https://github.com/wp-kit/utils#commands).
 
-Alternatively, you can place the [config file(s)](config) in your ```theme/resources/config``` directory manually.
+Alternatively, you can place the [config file(s)](config) and [view file(s)](views) in your ```theme/resources/config``` and ```theme/resources/views``` directories manually.
 
 ## Usage
 
