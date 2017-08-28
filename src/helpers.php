@@ -1,6 +1,7 @@
 <?php
 	
 	if ( ! function_exists('flash') ) {
+		
 	    /**
 	     * Gets the notifier object
 	     *
