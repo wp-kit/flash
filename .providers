@@ -1,0 +1,3 @@
+Illuminate\Filesystem\FilesystemServiceProvider::class,
+Illuminate\Session\SessionServiceProvider::class,
+WPKit\Flash\FlashServiceProvider::class
