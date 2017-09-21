@@ -11,9 +11,9 @@
 	     *
 	     * @return view
 	     */
-	    public static function print()
+	    public static function display()
 	    {
-	        return static::$app[static::getFacadeAccessor()]->print();
+	        return static::$app[static::getFacadeAccessor()]->display();
 	    }
 	    
 	}
