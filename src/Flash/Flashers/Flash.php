@@ -138,7 +138,7 @@
 	     *
 	     * @return void
 	     */
-	    public function print( $item = array() )
+	    public function display( $item = array() )
 	    {
 		    echo $this->render( $item );
 		    $this->clear();
