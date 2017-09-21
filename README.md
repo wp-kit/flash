@@ -106,7 +106,7 @@ $chained = FrontendFlash::success('Well done!')->render();
 
 FrontendFlash::clear();
 
-FrontendFlash::print([
+FrontendFlash::display([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -125,7 +125,7 @@ $chained = AdminFlash::success('Well done!')->render();
 
 AdminFlash::clear();
 
-AdminFlash::print([
+AdminFlash::display([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -148,7 +148,7 @@ $chained = flash('frontend')->success('Well done!')->render();
 
 flash('frontend')->clear();
 
-flash('frontend')->print([
+flash('frontend')->display([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -167,7 +167,7 @@ $chained = flash('admin')->success('Well done!')->render();
 
 flash('admin')->clear();
 
-flash('admin')->print([
+flash('admin')->display([
 	'message' => 'Ooh, living dangerously are we?'
 	'class' => 'some-classname'
 ]);
@@ -187,7 +187,7 @@ This is just a guide of how you use use ```wp-kit/flash``` when looping through 
 	
 		<div class="column">
 		
-			<?php flash( 'frontend' )->print( $message ); ?>
+			<?php flash( 'frontend' )->display( $message ); ?>
 			
 		</div>
 		
